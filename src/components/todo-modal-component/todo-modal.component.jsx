@@ -11,6 +11,7 @@ import { addTodo } from '../../redux/slices/todoSlice'
 
 // Styles
 import './todo-modal.styles.scss'
+import { toast } from 'react-hot-toast'
 
 export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
   const [title, setTitle] = useState('')
@@ -30,6 +31,10 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
           time: new Date().toLocaleDateString(),
         })
       )
+
+      toast.success('Task Added Successfully')
+    } else {
+      toast.error('Task title should not be empty')
     }
   }
 
