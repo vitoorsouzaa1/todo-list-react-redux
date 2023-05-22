@@ -29,6 +29,11 @@ const TodoSlice = createSlice({
           ...action.payload,
         })
         window.localStorage.getItem('todoList', JSON.stringify(todoListArr))
+      } else {
+        window.localStorage.setItem(
+          'todoList',
+          JSON.stringify([{ ...action.payload }])
+        )
       }
     },
   },
@@ -36,12 +41,3 @@ const TodoSlice = createSlice({
 
 export const { addTodo } = TodoSlice.actions
 export default TodoSlice.reducer
-
-/* else {
-        window.localStorage.setItem(
-          'todoList',
-          JSON.stringify([{ ...action.payload }])
-        )
-      }
-      
-    */
