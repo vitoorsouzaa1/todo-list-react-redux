@@ -1,6 +1,7 @@
 // Components
 import { AppHeaderComponent } from './components/header-component/header.component'
 import { TitleComponent } from './components/title-component/title.component'
+import { ContentComponent } from './components/content-component/content-component'
 
 // Styles
 import './styles/GlobalStyles.css'
@@ -12,6 +13,7 @@ export const App = () => {
       <TitleComponent>TODO LIST</TitleComponent>
       <div className='app__wrapper'>
         <AppHeaderComponent></AppHeaderComponent>
+        <ContentComponent />
       </div>
     </div>
   )
