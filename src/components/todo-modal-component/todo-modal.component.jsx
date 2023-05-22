@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MdOutlineClose } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
+import { v4 as uuid } from 'uuid'
 
 // Components
 import { ButtonComponent } from '../button-component/button.component'
@@ -21,7 +22,14 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
     e.preventDefault()
 
     if (title && status) {
-      dispatch(addTodo)
+      dispatch(
+        addTodo({
+          id: uuid(),
+          title,
+          status,
+          time: new Date().toLocaleDateString(),
+        })
+      )
     }
   }
 
@@ -36,7 +44,10 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
           >
             <MdOutlineClose />
           </div>
-          <form className='form-container' onSubmit={(e) => handleTaskSubmit()}>
+          <form
+            className='form-container'
+            onSubmit={(e) => handleTaskSubmit(e)}
+          >
             <h1 className='form-title'>Add Task</h1>
             <label htmlFor='title'>
               Title
