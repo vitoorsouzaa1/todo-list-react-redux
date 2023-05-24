@@ -33,6 +33,7 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
       )
 
       toast.success('Task Added Successfully')
+      setModalOpen(false)
     } else {
       toast.error('Task title should not be empty')
     }
