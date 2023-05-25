@@ -49,8 +49,23 @@ export const TodoSlice = createSlice({
         state.todoList = todoListArr
       }
     },
+    updateTodo: (state, action) => {
+      const todoList = window.localStorage.getItem('todoList')
+
+      if (todoList) {
+        const todoListArr = JSON.parse(todoList)
+        todoListArr.forEach((item, index) => {
+          if (item.id === action.payload.id) {
+            item.status = action.payload.status
+            item.title = action.payload.title
+          }
+        })
+        window.localStorage.setItem('todoList', JSON.stringify(todoListArr))
+        state.todoList = todoListArr
+      }
+    },
   },
 })
 
-export const { addTodo, deleteTodo } = TodoSlice.actions
+export const { addTodo, deleteTodo, updateTodo } = TodoSlice.actions
 export default TodoSlice.reducer
