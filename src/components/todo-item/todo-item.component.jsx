@@ -54,6 +54,7 @@ export const TodoItem = ({ todo }) => {
 
       <TodoModalComponent
         type='update'
+        todo={todo}
         modalOpen={updateModalOpen}
         setModalOpen={setUpdateModalOpen}
       />
