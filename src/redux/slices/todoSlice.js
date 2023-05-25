@@ -11,13 +11,13 @@ const getInitialTodo = () => {
   return []
 }
 
-const initialState = {
+const initialValue = {
   todoList: getInitialTodo(),
 }
 
-const TodoSlice = createSlice({
+export const TodoSlice = createSlice({
   name: 'todo',
-  initialState: initialState,
+  initialState: initialValue,
   reducers: {
     addTodo: (state, action) => {
       state.todoList.push(action.payload)
@@ -28,7 +28,7 @@ const TodoSlice = createSlice({
         todoListArr.push({
           ...action.payload,
         })
-        window.localStorage.getItem('todoList', JSON.stringify(todoListArr))
+        window.localStorage.setItem('todoList', JSON.stringify(todoListArr))
       } else {
         window.localStorage.setItem(
           'todoList',
@@ -36,8 +36,21 @@ const TodoSlice = createSlice({
         )
       }
     },
+    deleteTodo: (state, action) => {
+      const todoList = window.localStorage.getItem('todoList')
+      if (todoList) {
+        const todoListArr = JSON.parse(todoList)
+        todoListArr.forEach((item, index) => {
+          if (item.id === action.payload) {
+            todoListArr.splice(index, 1)
+          }
+        })
+        window.localStorage.setItem('todoList', JSON.stringify(todoListArr))
+        state.todoList = todoListArr
+      }
+    },
   },
 })
 
-export const { addTodo } = TodoSlice.actions
+export const { addTodo, deleteTodo } = TodoSlice.actions
 export default TodoSlice.reducer
