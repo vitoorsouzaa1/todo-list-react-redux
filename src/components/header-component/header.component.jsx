@@ -20,7 +20,11 @@ export const AppHeaderComponent = () => {
         <option value='incomplete'>Incomplete</option>
         <option value='complete'>Complete</option>
       </Selector>
-      <TodoModalComponent modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <TodoModalComponent
+        type='add'
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      />
     </div>
   )
 }
