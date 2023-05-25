@@ -13,7 +13,7 @@ import { addTodo } from '../../redux/slices/todoSlice'
 import './todo-modal.styles.scss'
 import { toast } from 'react-hot-toast'
 
-export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
+export const TodoModalComponent = ({ type, modalOpen, setModalOpen }) => {
   const [title, setTitle] = useState('')
   const [status, setStatus] = useState('incomplete')
 
@@ -22,20 +22,27 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
   const handleTaskSubmit = (e) => {
     e.preventDefault()
 
-    if (title && status) {
-      dispatch(
-        addTodo({
-          id: uuid(),
-          title,
-          status,
-          time: new Date().toLocaleDateString(),
-        })
-      )
+    if (title === '') {
+      toast.error('Please enter a title')
+    }
 
-      toast.success('Task Added Successfully')
-      setModalOpen(false)
-    } else {
-      toast.error('Task title should not be empty')
+    if (title && status) {
+      if (type === 'add') {
+        dispatch(
+          addTodo({
+            id: uuid(),
+            title,
+            status,
+            time: new Date().toLocaleDateString(),
+          })
+        )
+
+        toast.success('Task Added Successfully')
+        setModalOpen(false)
+      }
+      if (type === 'update') {
+        console.log('updating task')
+      }
     }
   }
 
@@ -54,7 +61,10 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
             className='form-container'
             onSubmit={(e) => handleTaskSubmit(e)}
           >
-            <h1 className='form-title'>Add Task</h1>
+            <h1 className='form-title'>
+              {' '}
+              {type === 'update' ? 'Update' : 'Add'} Task
+            </h1>
             <label htmlFor='title'>
               Title
               <input
@@ -78,7 +88,7 @@ export const TodoModalComponent = ({ modalOpen, setModalOpen }) => {
             </label>
             <div className='button-container'>
               <ButtonComponent type='submit' variant='primary'>
-                Add Task
+                {type === 'update' ? 'Update' : 'Add'} Task
               </ButtonComponent>
               <ButtonComponent
                 type='button'
