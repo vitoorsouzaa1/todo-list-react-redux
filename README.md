@@ -9,4 +9,4 @@
 - **SASS**
   For the stylization of the project.
 
-![TodoListMainPage](https://www.dropbox.com/s/837gk5dkhj6dvnv/todolist-main-page.png?dl=0)
+![TodoListMainPage](https://www.dropbox.com/s/837gk5dkhj6dvnv/todolist-main-page.png)
