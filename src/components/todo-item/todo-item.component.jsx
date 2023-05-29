@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast'
 
 // Components
 import { TodoModalComponent } from '../todo-modal-component/todo-modal.component'
-import { CheckBoxComponent } from '../../check-box-component/check-box.component'
+import { CheckBoxComponent } from '../check-box-component/check-box.component'
 
 // Reducers & Slices
 import { deleteTodo, updateTodo } from '../../redux/slices/todoSlice'
