@@ -14,7 +14,7 @@ export const ContentComponent = () => {
   sortedTodos.sort((a, b) => new Date(b.time) - new Date(a.time))
 
   return (
-    <div>
+    <div className='content__wrapper'>
       {sortedTodos && sortedTodos.length > 0
         ? sortedTodos.map((todo) => <TodoItem key={todo.id} todo={todo} />)
         : 'Todo not found'}
