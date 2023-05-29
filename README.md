@@ -9,4 +9,4 @@
 - **SASS**
   - For the stylization of the project.
 
-![alt](https://prnt.sc/mc7Blh4O0JbR)
+![alt](https://imgur.com/xsOCJpW)
