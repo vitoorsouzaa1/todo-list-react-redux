@@ -33,7 +33,7 @@ export const TodoModalComponent = ({ type, modalOpen, setModalOpen, todo }) => {
     e.preventDefault()
 
     if (title === '') {
-      toast.error('Please enter a title')
+      toast.error('Please enter a title.')
     }
 
     if (title && status) {
@@ -47,7 +47,7 @@ export const TodoModalComponent = ({ type, modalOpen, setModalOpen, todo }) => {
           })
         )
 
-        toast.success('Task Added Successfully')
+        toast.success('Task Added Successfully!')
       }
       if (type === 'update') {
         if (todo.title !== title || todo.status !== status) {
