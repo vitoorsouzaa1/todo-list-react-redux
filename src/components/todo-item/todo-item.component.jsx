@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { MdDelete, MdEdit } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-hot-toast'
+import { motion } from 'framer-motion'
 
 // Components
 import { TodoModalComponent } from '../todo-modal-component/todo-modal.component'
@@ -12,6 +13,14 @@ import { deleteTodo, updateTodo } from '../../redux/slices/todoSlice'
 
 // Styles
 import './todo-item.styles.scss'
+
+const childVariant = {
+  hidden: { y: 20, opactiy: 0 },
+  visible: {
+    y: 0,
+    opactiy: 1,
+  },
+}
 
 export const TodoItem = ({ todo }) => {
   const [updateModalOpen, setUpdateModalOpen] = useState(false)
@@ -49,7 +58,7 @@ export const TodoItem = ({ todo }) => {
 
   return (
     <>
-      <div className='todo-item'>
+      <motion.div className='todo-item' variants={childVariant}>
         <div className='todo-details'>
           <CheckBoxComponent checked={checked} handleChecked={handleChecked} />
           <div className='todo-text'>
@@ -73,7 +82,7 @@ export const TodoItem = ({ todo }) => {
             <MdEdit />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       <TodoModalComponent
         type='update'
