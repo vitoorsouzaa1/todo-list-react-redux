@@ -85,6 +85,7 @@ export const TodoModalComponent = ({ type, modalOpen, setModalOpen, todo }) => {
           )
         } else {
           toast.error('No changes made!')
+          return
         }
       }
       setModalOpen(false)
