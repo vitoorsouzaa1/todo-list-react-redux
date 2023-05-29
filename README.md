@@ -8,3 +8,5 @@
   - To store data and make the CRUD operations, along with localstorage to store session data.
 - **SASS**
   - For the stylization of the project.
+
+![alt](https://prnt.sc/mc7Blh4O0JbR)
